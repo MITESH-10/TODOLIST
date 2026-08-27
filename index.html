@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7f2">
+  <title>Daymark | To-do list</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">D</span><span>daymark</span></div>
+      <nav class="nav" aria-label="Task views">
+        <button class="nav-item active" data-filter="all"><span class="nav-icon">○</span>All tasks<span class="nav-count" id="all-count">0</span></button>
+        <button class="nav-item" data-filter="today"><span class="nav-icon">◷</span>Today<span class="nav-count" id="today-count">0</span></button>
+        <button class="nav-item" data-filter="upcoming"><span class="nav-icon">↗</span>Upcoming<span class="nav-count" id="upcoming-count">0</span></button>
+        <button class="nav-item" data-filter="completed"><span class="nav-icon">✓</span>Completed<span class="nav-count" id="completed-count">0</span></button>
+      </nav>
+      <div class="sidebar-note">
+        <span class="note-kicker">A little progress</span>
+        <strong id="progress-copy">0% complete</strong>
+        <div class="progress-track"><span id="progress-bar"></span></div>
+      </div>
+      <p class="sidebar-footer">Make room for what matters.</p>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="date-label">Thursday, August 27</p>
+          <h1>Good morning, Mitesh<span class="title-dot">.</span></h1>
+        </div>
+        <button class="clear-button" id="clear-completed" type="button">Clear completed</button>
+      </header>
+
+      <section class="summary-row" aria-label="Task summary">
+        <div><span class="summary-label">Open tasks</span><strong id="open-total">0</strong></div>
+        <div><span class="summary-label">Due today</span><strong id="due-total">0</strong></div>
+        <div><span class="summary-label">Completion</span><strong id="completion-total">0%</strong></div>
+      </section>
+
+      <section class="task-area">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">Your focus</span>
+            <h2 id="view-title">All tasks</h2>
+          </div>
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search tasks" aria-label="Search tasks"></label>
+        </div>
+
+        <form class="new-task" id="task-form">
+          <input id="task-input" type="text" placeholder="What needs doing?" autocomplete="off" required>
+          <select id="priority-input" aria-label="Priority">
+            <option value="normal">Normal</option>
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
+          <input id="date-input" type="date" aria-label="Due date">
+          <button type="submit" class="add-button">Add task <span>+</span></button>
+        </form>
+
+        <div class="task-list" id="task-list" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span class="empty-mark">✓</span>
+          <h3>Nothing here right now</h3>
+          <p>Add a task or switch to another view.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
